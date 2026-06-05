@@ -1,489 +1,577 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Raker – Bidang 12</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Program Kerja — Bidang 12: Digitalisasi & AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #13161e;
+    --surface2: #1a1e29;
+    --border: #252a38;
+    --accent: #4f8ef7;
+    --accent2: #7c3aed;
+    --accent3: #10b981;
+    --text: #e8eaf0;
+    --text-muted: #6b7280;
+    --text-dim: #9ca3af;
+    --obj1: #4f8ef7;
+    --obj2: #7c3aed;
+    --obj3: #10b981;
+  }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #f5f6fa;
-      color: #1a1d23;
-      padding: 40px 24px 60px;
-      font-size: 14px;
-      line-height: 1.6;
-    }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    h1 {
-      font-size: 20px;
-      font-weight: 700;
-      color: #1a1d23;
-      margin-bottom: 8px;
-    }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.65;
+    padding: 32px 16px 64px;
+  }
 
-    .subtitle {
-      font-size: 13px;
-      color: #6b7280;
-      margin-bottom: 36px;
-    }
+  /* ── HEADER ─────────────────────────────────────── */
+  .header {
+    max-width: 960px;
+    margin: 0 auto 40px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 24px;
+  }
+  .header-tag {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 14px;
+  }
+  .header h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(22px, 4vw, 34px);
+    font-weight: 800;
+    line-height: 1.2;
+    color: #fff;
+  }
+  .header h1 span { color: var(--accent); }
+  .header p {
+    margin-top: 8px;
+    color: var(--text-dim);
+    font-size: 13px;
+    max-width: 620px;
+  }
 
-    /* ── Objective Block ─────────────────────────────── */
-    .objective-block {
-      margin-bottom: 48px;
-    }
+  /* ── OBJECTIVE BLOCK ─────────────────────────────── */
+  .objective-block {
+    max-width: 960px;
+    margin: 0 auto 48px;
+  }
 
-    .objective-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      background: #1a1d23;
-      color: #fff;
-      border-radius: 10px 10px 0 0;
-      padding: 16px 20px;
-    }
+  .obj-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px 10px 0 0;
+    padding: 20px 22px;
+  }
+  .obj-number {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .obj1 .obj-number { background: rgba(79,142,247,.15); color: var(--obj1); border: 1px solid rgba(79,142,247,.3); }
+  .obj2 .obj-number { background: rgba(124,58,237,.15); color: var(--obj2); border: 1px solid rgba(124,58,237,.3); }
+  .obj3 .obj-number { background: rgba(16,185,129,.15); color: var(--obj3); border: 1px solid rgba(16,185,129,.3); }
 
-    .obj-badge {
-      flex-shrink: 0;
-      background: #3b82f6;
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .04em;
-      padding: 3px 10px;
-      border-radius: 20px;
-      margin-top: 2px;
-    }
+  .obj-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(13px, 2vw, 15px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.45;
+  }
 
-    .obj-text {
-      font-size: 13.5px;
-      font-weight: 500;
-      line-height: 1.55;
-    }
+  /* ── KEY RESULTS ─────────────────────────────────── */
+  .kr-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: none;
+    padding: 0 22px 20px;
+  }
+  .kr-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 14px 0 10px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 12px;
+  }
+  .kr-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .kr-list li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .kr-list li::before {
+    content: '◆';
+    font-size: 7px;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .obj1 .kr-list li::before { color: var(--obj1); }
+  .obj2 .kr-list li::before { color: var(--obj2); }
+  .obj3 .kr-list li::before { color: var(--obj3); }
 
-    /* ── Main Table ──────────────────────────────────── */
-    .main-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      border-radius: 0 0 10px 10px;
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,.07);
-    }
+  /* ── ACTIVITIES TABLE ────────────────────────────── */
+  .activities-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+  }
+  .act-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 14px 22px 12px;
+    border-top: 1px solid var(--border);
+  }
 
-    .main-table thead tr {
-      background: #eef0f5;
-    }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
-    .main-table th {
-      padding: 10px 16px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: #6b7280;
-      text-align: left;
-      border-bottom: 2px solid #e2e4ea;
-    }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  thead th {
+    background: var(--surface2);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 10px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background .15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(255,255,255,.025); }
 
-    /* column widths */
-    .col-no     { width: 44px; }
-    .col-kr     { width: 28%; }
-    .col-act    { width: 72%; }
+  td { padding: 12px 16px; vertical-align: top; color: var(--text-dim); line-height: 1.6; }
 
-    .main-table tbody tr {
-      vertical-align: top;
-      border-bottom: 1px solid #f0f1f5;
-      transition: background .15s;
-    }
-    .main-table tbody tr:last-child { border-bottom: none; }
-    .main-table tbody tr:hover { background: #fafbff; }
+  td.num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    width: 48px;
+  }
 
-    .main-table td {
-      padding: 14px 16px;
-      font-size: 13.5px;
-      color: #374151;
-    }
+  td.group-cell {
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--text);
+    vertical-align: top;
+    min-width: 160px;
+  }
 
-    .td-no {
-      text-align: center;
-      font-weight: 700;
-      color: #9ca3af;
-      font-size: 12px;
-      padding-top: 16px;
-    }
+  td.activity-cell { min-width: 260px; }
 
-    /* Key Result cell */
-    .kr-cell {
-      font-weight: 600;
-      color: #1a1d23;
-      font-size: 13px;
-      line-height: 1.55;
-    }
+  /* ── GROUP ROW ───────────────────────────────────── */
+  tr.group-row td {
+    background: var(--surface2);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr.group-row td span {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 10px;
+    margin-right: 8px;
+  }
+  .obj1 tr.group-row td span { background: rgba(79,142,247,.18); color: var(--obj1); }
+  .obj2 tr.group-row td span { background: rgba(124,58,237,.18); color: var(--obj2); }
+  .obj3 tr.group-row td span { background: rgba(16,185,129,.18); color: var(--obj3); }
 
-    /* Activity list */
-    .act-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
+  /* ── BADGE (app type) ────────────────────────────── */
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-right: 4px;
+    white-space: nowrap;
+  }
+  .badge-app  { background: rgba(79,142,247,.12); color: var(--accent);  border: 1px solid rgba(79,142,247,.25); }
+  .badge-ai   { background: rgba(124,58,237,.12); color: var(--accent2); border: 1px solid rgba(124,58,237,.25); }
+  .badge-auto { background: rgba(16,185,129,.12); color: var(--accent3); border: 1px solid rgba(16,185,129,.25); }
 
-    .act-list li {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-    }
+  /* ── COPY BUTTON ─────────────────────────────────── */
+  .copy-bar {
+    max-width: 960px;
+    margin: 0 auto 14px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .copy-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    background: var(--surface2);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: all .2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .copy-btn svg { width: 13px; height: 13px; }
 
-    .act-num {
-      flex-shrink: 0;
-      width: 22px;
-      height: 22px;
-      background: #eff6ff;
-      color: #3b82f6;
-      border-radius: 50%;
-      font-size: 11px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 1px;
-    }
+  /* ── FOOTER ──────────────────────────────────────── */
+  .footer {
+    max-width: 960px;
+    margin: 40px auto 0;
+    border-top: 1px solid var(--border);
+    padding-top: 18px;
+    color: var(--text-muted);
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
 
-    .act-text { color: #374151; line-height: 1.55; }
-
-    /* Sub-group label inside activity column */
-    .act-group-label {
-      font-size: 11.5px;
-      font-weight: 700;
-      letter-spacing: .04em;
-      color: #6b7280;
-      text-transform: uppercase;
-      margin: 8px 0 4px;
-      padding-left: 2px;
-    }
-    .act-group-label:first-child { margin-top: 0; }
-
-    /* separator row */
-    .sep-row td {
-      background: #f8f9fc;
-      padding: 6px 16px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .05em;
-      color: #9ca3af;
-      text-transform: uppercase;
-      border-top: 1px solid #e8eaf0;
-      border-bottom: 1px solid #e8eaf0;
-    }
-  </style>
+  @media (max-width: 600px) {
+    body { padding: 20px 12px 48px; }
+    .obj-header { flex-direction: column; gap: 8px; }
+    .obj-number { align-self: flex-start; }
+    td { padding: 10px 12px; font-size: 12px; }
+    thead th { padding: 8px 12px; font-size: 9px; }
+  }
+</style>
 </head>
 <body>
 
-<h1>RAKER – Bidang 12</h1>
-<p class="subtitle">Rencana Kerja &amp; Key Results</p>
+<!-- HEADER -->
+<div class="header">
+  <div class="header-tag">Raker 2025 · Bidang 12</div>
+  <h1>Digitalisasi <span>&amp;</span> AI</h1>
+  <p>Program Kerja — 3 Objektif · 12 Key Results · 50+ Aktivitas</p>
+</div>
 
+<!-- COPY BUTTON -->
+<div class="copy-bar">
+  <button class="copy-btn" onclick="copyTable()">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    Salin Tabel
+  </button>
+</div>
 
-<!-- ════════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════
      OBJECTIVE 1
 ════════════════════════════════════════════════════ -->
-<div class="objective-block">
-
-  <div class="objective-header">
-    <span class="obj-badge">Objective 1</span>
-    <span class="obj-text">Memfasilitasi digitalisasi operasional bisnis anggota serta tata kelola proker Internal Pengurus Harian melalui penyediaan tools digital siap pakai berbasis prinsip 0-cost development, serta layanan automasi yang disesuaikan dengan kebutuhan riil pengguna.</span>
+<div class="objective-block obj1" id="obj1">
+  <div class="obj-header">
+    <div class="obj-number">Objektif 1</div>
+    <div class="obj-title">Memfasilitasi digitalisasi operasional bisnis anggota dan tata kelola program kerja Internal Pengurus Harian melalui penyediaan tools digital siap pakai berbasis prinsip 0-cost development, serta layanan automasi yang disesuaikan dengan kebutuhan nyata pengguna.</div>
   </div>
 
-  <table class="main-table">
-    <thead>
-      <tr>
-        <th class="col-no">#</th>
-        <th class="col-kr">Key Result</th>
-        <th class="col-act">Activity</th>
-      </tr>
-    </thead>
-    <tbody>
+  <div class="kr-section">
+    <div class="kr-label">Key Results</div>
+    <ul class="kr-list">
+      <li>Menerapkan 100% penggunaan Diagnostic Form sebagai pintu masuk tunggal seluruh permintaan digitalisasi, automasi, pengembangan library app, dan request sistem proker dari bidang lain; serta mengolahnya menjadi 1 Peta Kebutuhan Digitalisasi Bulanan sebagai dasar penentuan prioritas pengembangan.</li>
+      <li>Menghasilkan solusi digital secara berkala: 10 tools siap pakai pada fase awal, minimal 5 rilis/pembaruan tools per bulan, serta minimal 3 pilot automasi berbasis kebutuhan nyata dalam satu kuartal.</li>
+      <li>Memastikan 100% solusi digital yang dirilis disertai panduan penggunaan, dokumentasi dasar, status uji coba, dan 0 critical bug pada fungsi utama.</li>
+      <li>Mencapai minimal 30–50 penggunaan, duplikasi, atau implementasi solusi digital oleh anggota, Internal Pengurus Harian, atau bidang lain dalam satu kuartal.</li>
+      <li>Mengumpulkan feedback pengguna setiap bulan, dengan target minimal 5 studi kasus/testimoni terverifikasi per kuartal, dan minimal 70% responden menyatakan solusi digital membantu operasional bisnis atau pengelolaan proker.</li>
+    </ul>
+  </div>
 
-      <!-- KR 1 -->
-      <tr>
-        <td class="td-no">1</td>
-        <td class="kr-cell">Menerapkan 100% penggunaan Diagnostic Form (Formulir Kebutuhan Digitalisasi) sebagai pintu masuk tunggal untuk seluruh permintaan digitalisasi, automasi, pengembangan library app, serta request sistem proker dari bidang lain; kemudian mengolah data tersebut menjadi 1 Peta Kebutuhan Digitalisasi Bulanan sebagai dasar penentuan prioritas pengembangan.</td>
-        <td>
-          <ul class="act-list">
-            <li><span class="act-num">1</span><span class="act-text">Menyusun Diagnostic Form sebagai pintu masuk utama, menerapkan aturan "No Form, No Process", serta mengklasifikasikan setiap request berdasarkan jenis kebutuhan digitalisasi.</span></li>
-            <li><span class="act-num">2</span><span class="act-text">Menyediakan link form yang mudah diakses, Membuat sistem tracking sederhana, Melakukan review request seminggu sekali, Melakukan review request seminggu sekali</span></li>
-            <li><span class="act-num">3</span><span class="act-text">Menyusun Peta Kebutuhan Digitalisasi Bulanan, Mengumumkan prioritas pengembangan bulan berikutnya</span></li>
-          </ul>
-        </td>
-      </tr>
+  <div class="activities-wrap">
+    <div class="act-label">Aktivitas</div>
+    <div class="table-scroll">
+      <table id="tbl1">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Key Result</th>
+            <th>Aktivitas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- KR 1 -->
+          <tr class="group-row"><td colspan="3"><span>KR 1</span>Diagnostic Form &amp; Peta Kebutuhan Digitalisasi Bulanan</td></tr>
+          <tr><td class="num">1.1</td><td class="group-cell">Diagnostic Form</td><td class="activity-cell">Menyusun Diagnostic Form sebagai pintu masuk utama permintaan digitalisasi, menerapkan aturan <em>"No Form, No Process"</em>, dan mengklasifikasikan setiap request berdasarkan jenis kebutuhan.</td></tr>
+          <tr><td class="num">1.2</td><td class="group-cell">Akses &amp; Tracking</td><td class="activity-cell">Menyediakan tautan form yang mudah diakses, membangun sistem tracking request sederhana, dan melakukan review rutin setiap minggu.</td></tr>
+          <tr><td class="num">1.3</td><td class="group-cell">Peta Kebutuhan</td><td class="activity-cell">Menyusun Peta Kebutuhan Digitalisasi Bulanan dan mengumumkan prioritas pengembangan untuk bulan berikutnya.</td></tr>
 
-      <!-- KR 2 -->
-      <tr>
-        <td class="td-no">2</td>
-        <td class="kr-cell">Menghasilkan solusi digital prioritas secara berkala, terdiri dari 10 tools siap pakai pada fase awal, minimal 5 rilis/update tools setiap bulan, serta minimal 3 pilot automasi berbasis kebutuhan riil dalam satu kuartal.</td>
-        <td>
-          <ul class="act-list">
-            <li><span class="act-num">1</span><span class="act-text">Membuat SOP standar pengembangan tools berbasis Google Apps Script, Google Sheet, dan Google Form.</span></li>
-          </ul>
+          <!-- KR 2 -->
+          <tr class="group-row"><td colspan="3"><span>KR 2</span>Pengembangan Tools &amp; Pilot Automasi</td></tr>
+          <tr><td class="num">2.1</td><td class="group-cell">SOP Pengembangan</td><td class="activity-cell">Membuat SOP standar pengembangan tools berbasis Google Apps Script, Google Sheet, dan Google Form.</td></tr>
+          <tr><td class="num">2.2</td><td class="group-cell"><span class="badge badge-app">App</span>Booking Management</td><td class="activity-cell">Mengembangkan aplikasi untuk kebutuhan bisnis jasa, sewa, reservasi, dan appointment — mencakup pencatatan jadwal, data pelanggan, status booking, dan pembayaran.</td></tr>
+          <tr><td class="num">2.3</td><td class="group-cell"><span class="badge badge-app">App</span>UMKM GO</td><td class="activity-cell">Mengembangkan aplikasi operasional UMKM dengan fitur finance, manajemen piutang, POS/kasir, dan manajemen stok.</td></tr>
+          <tr><td class="num">2.4</td><td class="group-cell"><span class="badge badge-app">App</span>Generate Certificate</td><td class="activity-cell">Mengembangkan aplikasi untuk membuat dan mengirimkan sertifikat kegiatan secara otomatis kepada masing-masing peserta.</td></tr>
+          <tr><td class="num">2.5</td><td class="group-cell"><span class="badge badge-app">App</span>Sistem Antrean</td><td class="activity-cell">Mengembangkan aplikasi pengelolaan nomor antrean, daftar pelanggan, status layanan, dan monitoring antrean secara real-time.</td></tr>
+          <tr><td class="num">2.6</td><td class="group-cell"><span class="badge badge-app">App</span>E-Commerce Lite</td><td class="activity-cell">Mengembangkan aplikasi bagi UMKM untuk membuat katalog produk, menerima checkout/order, mengelola cabang, dan mencatat transaksi dasar.</td></tr>
+          <tr><td class="num">2.7</td><td class="group-cell"><span class="badge badge-app">App</span>Design Generator</td><td class="activity-cell">Mengembangkan aplikasi pembuatan poster, banner, logo, dan materi promosi berbasis template.</td></tr>
+          <tr><td class="num">2.8</td><td class="group-cell"><span class="badge badge-app">App</span>Affiliate Lite</td><td class="activity-cell">Mengembangkan aplikasi untuk membuat aset promosi produk, materi kampanye, tautan/scene produk, dan pencatatan performa affiliate sederhana.</td></tr>
+          <tr><td class="num">2.9</td><td class="group-cell"><span class="badge badge-ai">AI</span>Brand Generator</td><td class="activity-cell">Mengembangkan tools AI untuk membuat konsep brand, nama brand, tagline, tone of voice, persona bisnis, dan arahan identitas visual awal.</td></tr>
+          <tr><td class="num">2.10</td><td class="group-cell"><span class="badge badge-ai">AI</span>Content Planner</td><td class="activity-cell">Mengembangkan tools AI untuk menyusun kalender konten, ide konten, caption, hook, CTA, dan rencana publikasi promosi.</td></tr>
+          <tr><td class="num">2.11</td><td class="group-cell"><span class="badge badge-ai">AI</span>Business Plan Kit</td><td class="activity-cell">Mengembangkan tools AI untuk membantu penyusunan rencana bisnis, analisis SWOT, HR assistant, konten marketing, riset pasar, ide bisnis, dan simulasi anggaran.</td></tr>
+          <tr><td class="num">2.12</td><td class="group-cell">Pembaruan Berkala</td><td class="activity-cell">Memperbarui minimal 5 tools setiap bulan berdasarkan Peta Kebutuhan Digitalisasi Bulanan, feedback pengguna, dan request dari bidang lain.</td></tr>
+          <tr><td class="num">2.13</td><td class="group-cell"><span class="badge badge-auto">Auto</span>Seleksi Pilot</td><td class="activity-cell">Menyeleksi minimal 3 request automasi dari Diagnostic Form untuk dijadikan pilot automasi berbasis kebutuhan nyata dalam satu kuartal.</td></tr>
+          <tr><td class="num">2.14</td><td class="group-cell"><span class="badge badge-auto">Auto</span>Pembangunan Pilot</td><td class="activity-cell">Membangun minimal 3 pilot automasi untuk mendukung operasional bisnis anggota atau tata kelola proker Internal Pengurus Harian.</td></tr>
 
-          <div class="act-group-label">10 App Awal</div>
-          <ul class="act-list">
-            <li><span class="act-num">2</span><span class="act-text">Mengembangkan Aplikasi Booking Management untuk kebutuhan bisnis jasa, sewa, reservasi, appointment, pencatatan jadwal, data pelanggan, status booking, dan pembayaran.</span></li>
-            <li><span class="act-num">3</span><span class="act-text">Mengembangkan Aplikasi UMKM GO yang memuat fitur finance, manajemen piutang, POS/kasir, dan manajemen stok untuk membantu operasional dasar UMKM.</span></li>
-            <li><span class="act-num">4</span><span class="act-text">Mengembangkan Aplikasi Generate Certificate Event untuk membuat sertifikat kegiatan secara otomatis dan mengirimkannya ke masing-masing peserta.</span></li>
-            <li><span class="act-num">5</span><span class="act-text">Mengembangkan Aplikasi Sistem Antrean untuk mengelola nomor antrean, daftar pelanggan, status layanan, dan monitoring antrean.</span></li>
-            <li><span class="act-num">6</span><span class="act-text">Mengembangkan Aplikasi E-Commerce Lite untuk membantu UMKM membuat katalog produk, menerima checkout/order, mengelola cabang, dan mencatat transaksi dasar.</span></li>
-            <li><span class="act-num">7</span><span class="act-text">Mengembangkan Aplikasi Design Generator untuk membuat poster, banner, logo, dan materi promosi berbasis template.</span></li>
-            <li><span class="act-num">8</span><span class="act-text">Mengembangkan Aplikasi Affiliate Lite untuk membuat aset promosi produk, materi campaign, link/scene produk, dan pencatatan performa affiliate sederhana.</span></li>
-            <li><span class="act-num">9</span><span class="act-text">Mengembangkan AI Brand Generator untuk membuat konsep brand, nama brand, tagline, tone of voice, persona bisnis, dan arahan identitas visual awal.</span></li>
-            <li><span class="act-num">10</span><span class="act-text">Mengembangkan AI Content Planner untuk menyusun kalender konten, ide konten, caption, hook, CTA, dan rencana publikasi promosi.</span></li>
-            <li><span class="act-num">11</span><span class="act-text">Mengembangkan Business Plan Kit untuk membantu penyusunan rencana bisnis, analisis SWOT, HR assistant, konten marketing, riset pasar, ide bisnis, dan simulasi anggaran.</span></li>
-          </ul>
+          <!-- KR 3 -->
+          <tr class="group-row"><td colspan="3"><span>KR 3</span>Standar Rilis &amp; Kualitas Solusi Digital</td></tr>
+          <tr><td class="num">3.1</td><td class="group-cell">Release Checklist</td><td class="activity-cell">Membuat release checklist dan tahap pengecekan awal untuk memastikan setiap solusi digital layak dirilis sebelum digunakan.</td></tr>
+          <tr><td class="num">3.2</td><td class="group-cell">Panduan Penggunaan</td><td class="activity-cell">Membuat panduan penggunaan singkat untuk setiap solusi digital dalam bentuk dokumen, gambar langkah-langkah, atau video tutorial pendek.</td></tr>
+          <tr><td class="num">3.3</td><td class="group-cell">Uji Ulang Bug</td><td class="activity-cell">Melakukan uji coba ulang setelah perbaikan bug untuk memastikan fungsi utama berjalan dengan baik.</td></tr>
+          <tr><td class="num">3.4</td><td class="group-cell">Dokumentasi Rilis</td><td class="activity-cell">Menyimpan panduan, dokumentasi, tautan aplikasi, dan catatan rilis dalam folder atau dashboard pengelolaan tools.</td></tr>
 
-          <div class="act-group-label">Update &amp; Automasi</div>
-          <ul class="act-list">
-            <li><span class="act-num">12</span><span class="act-text">Memperbarui minimal 5 tools setiap bulan berdasarkan Peta Kebutuhan Digitalisasi Bulanan, feedback pengguna, dan request dari bidang lain.</span></li>
-            <li><span class="act-num">13</span><span class="act-text">Menyeleksi minimal 3 request automasi dari Diagnostic Form untuk dijadikan pilot automasi berbasis kebutuhan riil dalam satu kuartal.</span></li>
-            <li><span class="act-num">14</span><span class="act-text">Membangun minimal 3 pilot automasi untuk membantu operasional bisnis anggota atau tata kelola proker Internal Pengurus Harian.</span></li>
-          </ul>
-        </td>
-      </tr>
+          <!-- KR 4 -->
+          <tr class="group-row"><td colspan="3"><span>KR 4</span>Penggunaan &amp; Implementasi Tools</td></tr>
+          <tr><td class="num">4.1</td><td class="group-cell">Library App</td><td class="activity-cell">Membuat halaman Library App di Website Hub yang berisi daftar tools, kategori penggunaan, deskripsi singkat, tombol akses, dan status aplikasi.</td></tr>
+          <tr><td class="num">4.2</td><td class="group-cell">Tracking Penggunaan</td><td class="activity-cell">Membangun sistem tracking penggunaan tools melalui data klik, form akses, jumlah duplikasi, atau laporan implementasi dari pengguna.</td></tr>
+          <tr><td class="num">4.3</td><td class="group-cell">Laporan Bulanan</td><td class="activity-cell">Membuat laporan penggunaan bulanan yang memuat jumlah pengguna, jumlah duplikasi, tools terpopuler, bidang yang menggunakan, dan kendala penggunaan.</td></tr>
+          <tr><td class="num">4.4</td><td class="group-cell">Evaluasi Tools</td><td class="activity-cell">Mengevaluasi tools dengan penggunaan rendah untuk menentukan apakah perlu diperbaiki, disosialisasikan ulang, digabungkan, atau dihentikan.</td></tr>
 
-      <!-- KR 3 -->
-      <tr>
-        <td class="td-no">3</td>
-        <td class="kr-cell">Memastikan 100% solusi digital yang dirilis memiliki panduan penggunaan, dokumentasi dasar, status uji coba, serta 0 critical bug pada fungsi utama.</td>
-        <td>
-          <ul class="act-list">
-            <li><span class="act-num">1</span><span class="act-text">Membuat release checklist dan pengecekan awal  untuk memastikan setiap solusi digital layak dirilis sebelum digunakan oleh anggota, pengurus, atau bidang lain.</span></li>
-            <li><span class="act-num">2</span><span class="act-text">Membuat panduan penggunaan singkat untuk setiap solusi digital dalam bentuk dokumen, gambar langkah-langkah, atau video tutorial pendek.</span></li>
-            <li><span class="act-num">3</span><span class="act-text">Melakukan uji coba ulang setelah perbaikan bug untuk memastikan fungsi utama sudah berjalan dengan baik.</span></li>
-            <li><span class="act-num">4</span><span class="act-text">Menyimpan panduan, dokumentasi, link aplikasi, dan catatan rilis dalam folder atau dashboard pengelolaan tools.</span></li>
-          </ul>
-        </td>
-      </tr>
-
-      <!-- KR 4 -->
-      <tr>
-        <td class="td-no">4</td>
-        <td class="kr-cell">Mencapai minimal 30–50 penggunaan, duplikasi, atau implementasi solusi digital oleh anggota, Internal Pengurus Harian, atau bidang lain dalam satu kuartal.</td>
-        <td>
-          <ul class="act-list">
-            <li><span class="act-num">1</span><span class="act-text">Membuat halaman Library App di Website Hub yang berisi daftar tools, kategori penggunaan, deskripsi singkat, tombol akses, dan status aplikasi.</span></li>
-            <li><span class="act-num">2</span><span class="act-text">Membuat sistem tracking penggunaan tools melalui data klik, form akses, jumlah duplikasi, atau laporan implementasi dari pengguna.</span></li>
-            <li><span class="act-num">3</span><span class="act-text">Membuat laporan penggunaan bulanan yang berisi jumlah pengguna, jumlah duplikasi, tools paling banyak digunakan, bidang yang menggunakan, dan kendala penggunaan.</span></li>
-            <li><span class="act-num">4</span><span class="act-text">Mengevaluasi tools yang rendah penggunaannya untuk menentukan apakah perlu diperbaiki, disosialisasikan ulang, digabungkan, atau dihentikan.</span></li>
-          </ul>
-        </td>
-      </tr>
-
-      <!-- KR 5 -->
-      <tr>
-        <td class="td-no">5</td>
-        <td class="kr-cell">Mengumpulkan feedback pengguna setiap bulan, dengan target minimal 5 studi kasus/testimoni terverifikasi dalam satu kuartal, serta minimal 70% responden menyatakan solusi digital membantu operasional bisnis anggota atau pengelolaan proker.</td>
-        <td>
-          <ul class="act-list">
-            <li><span class="act-num">1</span><span class="act-text">Menyusun pertanyaan feedback sederhana yang mencakup nama tools, kebutuhan yang dibantu, tingkat kemudahan penggunaan, manfaat yang dirasakan, kendala penggunaan, dan saran perbaikan.</span></li>
-            <li><span class="act-num">2</span><span class="act-text">Membuat Form Feedback Pengguna untuk mengukur pengalaman anggota, Internal Pengurus Harian, atau bidang lain setelah menggunakan solusi digital.</span></li>
-            <li><span class="act-num">3</span><span class="act-text">Mengirimkan reminder feedback setiap bulan kepada pengguna yang sudah mengakses, menduplikasi, atau mengimplementasikan solusi digital.</span></li>
-            <li><span class="act-num">4</span><span class="act-text">Memilih minimal 5 testimoni atau studi kasus terbaik dalam satu kuartal berdasarkan kejelasan masalah, dampak penggunaan, dan bukti implementasi.</span></li>
-            <li><span class="act-num">5</span><span class="act-text">Mempublikasikan ringkasan testimoni terpilih di Website Hub atau kanal internal sebagai bukti manfaat solusi digital kepada anggota dan pengurus.</span></li>
-          </ul>
-        </td>
-      </tr>
-
-    </tbody>
-  </table>
+          <!-- KR 5 -->
+          <tr class="group-row"><td colspan="3"><span>KR 5</span>Feedback &amp; Studi Kasus Pengguna</td></tr>
+          <tr><td class="num">5.1</td><td class="group-cell">Desain Pertanyaan</td><td class="activity-cell">Menyusun pertanyaan feedback yang mencakup nama tools, kebutuhan yang dibantu, kemudahan penggunaan, manfaat yang dirasakan, kendala, dan saran perbaikan.</td></tr>
+          <tr><td class="num">5.2</td><td class="group-cell">Form Feedback</td><td class="activity-cell">Membuat Form Feedback Pengguna untuk mengukur pengalaman anggota, Internal Pengurus Harian, atau bidang lain setelah menggunakan solusi digital.</td></tr>
+          <tr><td class="num">5.3</td><td class="group-cell">Reminder Feedback</td><td class="activity-cell">Mengirimkan reminder feedback setiap bulan kepada pengguna yang sudah mengakses, menduplikasi, atau mengimplementasikan solusi digital.</td></tr>
+          <tr><td class="num">5.4</td><td class="group-cell">Kurasi Testimoni</td><td class="activity-cell">Memilih minimal 5 testimoni atau studi kasus terbaik per kuartal berdasarkan kejelasan masalah, dampak penggunaan, dan bukti implementasi.</td></tr>
+          <tr><td class="num">5.5</td><td class="group-cell">Publikasi Testimoni</td><td class="activity-cell">Mempublikasikan ringkasan testimoni terpilih di Website Hub atau kanal internal sebagai bukti nyata manfaat solusi digital.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
-
-<!-- ════════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════
      OBJECTIVE 2
 ════════════════════════════════════════════════════ -->
-<div class="objective-block">
-
-  <div class="objective-header">
-    <span class="obj-badge">Objective 2</span>
-    <span class="obj-text">Membangun platform pembelajaran AI yang praktis, ringan, dan aplikatif untuk membantu seluruh anggota HIPMI Institute memahami, mencoba, dan menerapkan AI sesuai kebutuhan bisnis maupun pengembangan diri.</span>
+<div class="objective-block obj2" id="obj2">
+  <div class="obj-header">
+    <div class="obj-number">Objektif 2</div>
+    <div class="obj-title">Membangun platform pembelajaran AI yang praktis, ringan, dan aplikatif untuk membantu seluruh anggota HIPMI Institute memahami, mencoba, dan menerapkan AI sesuai kebutuhan bisnis maupun pengembangan diri.</div>
   </div>
 
-  <table class="main-table">
-    <thead>
-      <tr>
-        <th class="col-no">#</th>
-        <th class="col-kr">Key Result</th>
-        <th class="col-act">Activity</th>
-      </tr>
-    </thead>
-    <tbody>
+  <div class="kr-section">
+    <div class="kr-label">Key Results</div>
+    <ul class="kr-list">
+      <li>Merilis minimal 1 topik pembelajaran AI setiap 2 minggu, dengan setiap topik dipecah menjadi beberapa video pendek berisi pengantar konsep, praktik langsung, dan contoh penerapan.</li>
+      <li>Menghasilkan minimal 6 topik pembelajaran AI dalam satu kuartal yang relevan dengan kebutuhan bisnis, produktivitas, pemasaran, operasional, dan pengembangan diri anggota.</li>
+      <li>Mencapai minimal 30–50 peserta atau penonton unik dalam satu kuartal yang mengakses materi pembelajaran AI melalui Web Hub atau kanal resmi.</li>
+      <li>Mengumpulkan minimal 3–5 bukti penerapan atau testimoni belajar per kuartal dari anggota yang berhasil menggunakan materi AI untuk kebutuhan bisnis, produktivitas, atau pengembangan diri.</li>
+    </ul>
+  </div>
 
-      <!-- KR 1 -->
-      <tr>
-        <td class="td-no">1</td>
-        <td class="kr-cell">Merilis minimal 1 topik pembelajaran AI setiap 2 minggu, dengan setiap topik dipecah menjadi beberapa video pendek yang berisi pengantar konsep, praktik langsung, dan contoh penerapan.</td>
-        <td>
-          <div class="act-group-label">Topik Awal Pembelajaran</div>
-          <ul class="act-list">
-            <li><span class="act-num">1</span><span class="act-text">Perkenalan AI Automation &amp; n8n — Membahas pengenalan AI Automation, jenis-jenis tools automation, contoh penerapan sederhana, lalu masuk secara spesifik ke pengenalan n8n.</span></li>
-            <li><span class="act-num">2</span><span class="act-text">Membuat Chatbot Telegram untuk Pencatatan Keuangan — Membahas cara membuat chatbot Telegram sederhana yang dapat membantu mencatat pemasukan, pengeluaran, dan rekap keuangan secara otomatis.</span></li>
-            <li><span class="act-num">3</span><span class="act-text">Auto-Scraping / Monitoring Video Viral TikTok — Membahas cara membuat alur automation untuk mencari, memantau, atau mengumpulkan referensi video viral TikTok sebagai bahan riset konten, dengan tetap memperhatikan etika penggunaan data dan ketentuan platform.</span></li>
-          </ul>
+  <div class="activities-wrap">
+    <div class="act-label">Aktivitas</div>
+    <div class="table-scroll">
+      <table id="tbl2">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Key Result</th>
+            <th>Aktivitas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- KR 1 -->
+          <tr class="group-row"><td colspan="3"><span>KR 1</span>Rilis Topik Pembelajaran AI (1 Topik / 2 Minggu)</td></tr>
+          <tr><td class="num">1.1</td><td class="group-cell">Topik Awal — n8n</td><td class="activity-cell">Memproduksi materi pengenalan AI Automation: jenis-jenis tools automation, contoh penerapan sederhana, dan pengenalan mendalam tentang n8n.</td></tr>
+          <tr><td class="num">1.2</td><td class="group-cell">Topik Awal — Chatbot</td><td class="activity-cell">Memproduksi materi cara membuat chatbot Telegram sederhana untuk mencatat pemasukan, pengeluaran, dan rekap keuangan secara otomatis.</td></tr>
+          <tr><td class="num">1.3</td><td class="group-cell">Topik Awal — TikTok</td><td class="activity-cell">Memproduksi materi pembuatan alur automation untuk memantau dan mengumpulkan referensi video viral TikTok sebagai bahan riset konten, dengan memperhatikan etika penggunaan data dan ketentuan platform.</td></tr>
+          <tr><td class="num">1.4</td><td class="group-cell">Jadwal Produksi</td><td class="activity-cell">Menyusun jadwal produksi pembelajaran AI dengan target minimal 1 topik baru setiap 2 minggu.</td></tr>
+          <tr><td class="num">1.5</td><td class="group-cell">Riset &amp; Outline</td><td class="activity-cell">Melakukan riset materi terkini dan menyusun outline pembelajaran untuk setiap topik yang akan diproduksi.</td></tr>
+          <tr><td class="num">1.6</td><td class="group-cell">Produksi Video</td><td class="activity-cell">Memproduksi video pembelajaran, mencakup perekaman, editing, dan pembuatan thumbnail untuk setiap topik.</td></tr>
+          <tr><td class="num">1.7</td><td class="group-cell">Publikasi Materi</td><td class="activity-cell">Mempublikasikan materi di Web Hub beserta deskripsi singkat dan bahan pendukung yang diperlukan.</td></tr>
+          <tr><td class="num">1.8</td><td class="group-cell">Evaluasi Produksi</td><td class="activity-cell">Melakukan evaluasi proses produksi secara berkala sebagai bahan perbaikan untuk topik berikutnya.</td></tr>
 
-          <div class="act-group-label">Produksi &amp; Publikasi</div>
-          <ul class="act-list">
-            <li><span class="act-num">4</span><span class="act-text">Menyusun jadwal produksi pembelajaran AI dengan target minimal 1 topik setiap 2 minggu.</span></li>
-            <li><span class="act-num">5</span><span class="act-text">Melakukan riset materi terbaru dan menyusun outline pembelajaran untuk setiap topik.</span></li>
-            <li><span class="act-num">6</span><span class="act-text">Memproduksi video pembelajaran, termasuk perekaman, editing, dan pembuatan thumbnail.</span></li>
-            <li><span class="act-num">7</span><span class="act-text">Mempublikasikan materi di Web Hub beserta deskripsi singkat dan bahan pendukung yang diperlukan.</span></li>
-            <li><span class="act-num">8</span><span class="act-text">Melakukan evaluasi proses produksi secara berkala untuk perbaikan topik berikutnya.</span></li>
-          </ul>
-        </td>
-      </tr>
+          <!-- KR 2 -->
+          <tr class="group-row"><td colspan="3"><span>KR 2</span>6 Topik Pembelajaran AI per Kuartal</td></tr>
+          <tr><td class="num">2.1</td><td class="group-cell">Riset Kebutuhan</td><td class="activity-cell">Melakukan riset kebutuhan pembelajaran AI berdasarkan kebutuhan anggota HIPMI Institute dan tren AI terkini.</td></tr>
+          <tr><td class="num">2.2</td><td class="group-cell">Pengelompokan Topik</td><td class="activity-cell">Menyusun dan mengelompokkan ide topik pembelajaran AI ke dalam kategori: bisnis, produktivitas, pemasaran, operasional, dan pengembangan diri.</td></tr>
+          <tr><td class="num">2.3</td><td class="group-cell">Penetapan Prioritas</td><td class="activity-cell">Menentukan minimal 6 topik pembelajaran AI prioritas untuk satu kuartal.</td></tr>
+          <tr><td class="num">2.4</td><td class="group-cell">Urutan Materi</td><td class="activity-cell">Menyusun urutan materi dan output praktik untuk setiap topik pembelajaran.</td></tr>
+          <tr><td class="num">2.5</td><td class="group-cell">Kalender Rilis</td><td class="activity-cell">Membuat kalender rilis topik pembelajaran AI dengan jadwal minimal 1 topik setiap 2 minggu.</td></tr>
+          <tr><td class="num">2.6</td><td class="group-cell">Dokumentasi Kurikulum</td><td class="activity-cell">Melakukan review berkala dan mendokumentasikan kurikulum pembelajaran ke dalam Web Hub atau folder pembelajaran.</td></tr>
 
-      <!-- KR 2 -->
-      <tr>
-        <td class="td-no">2</td>
-        <td class="kr-cell">Menghasilkan minimal 6 topik pembelajaran AI dalam satu kuartal yang relevan dengan kebutuhan bisnis, produktivitas, pemasaran, operasional, dan pengembangan diri anggota HIPMI Institute.</td>
-        <td>
-          <ul class="act-list">
-            <li><span class="act-num">1</span><span class="act-text">Melakukan riset kebutuhan pembelajaran AI berdasarkan kebutuhan anggota HIPMI Institute dan tren AI terkini.</span></li>
-            <li><span class="act-num">2</span><span class="act-text">Menyusun dan mengelompokkan ide topik pembelajaran AI ke dalam kategori bisnis, produktivitas, pemasaran, operasional, dan pengembangan diri.</span></li>
-            <li><span class="act-num">3</span><span class="act-text">Menentukan minimal 6 topik pembelajaran AI prioritas untuk satu kuartal.</span></li>
-            <li><span class="act-num">4</span><span class="act-text">Menyusun urutan materi dan output praktik untuk setiap topik pembelajaran.</span></li>
-            <li><span class="act-num">5</span><span class="act-text">Membuat kalender rilis topik pembelajaran AI dengan jadwal minimal 1 topik setiap 2 minggu.</span></li>
-            <li><span class="act-num">6</span><span class="act-text">Melakukan review berkala dan mendokumentasikan kurikulum pembelajaran ke dalam Web Hub atau folder pembelajaran.</span></li>
-          </ul>
-        </td>
-      </tr>
+          <!-- KR 3 -->
+          <tr class="group-row"><td colspan="3"><span>KR 3</span>30–50 Peserta/Penonton Unik per Kuartal</td></tr>
+          <tr><td class="num">3.1</td><td class="group-cell">Pengelolaan Konten</td><td class="activity-cell">Mengunggah dan mengelola materi pembelajaran AI di Web Hub atau kanal resmi, termasuk katalog berisi topik, deskripsi, video, dan bahan praktik.</td></tr>
+          <tr><td class="num">3.2</td><td class="group-cell">Tracking Peserta</td><td class="activity-cell">Membangun sistem tracking peserta atau penonton unik melalui data akses Web Hub, analytics video, atau rekap manual.</td></tr>
+          <tr><td class="num">3.3</td><td class="group-cell">Promosi &amp; Reminder</td><td class="activity-cell">Membuat materi promosi dan reminder akses untuk mendorong anggota mengakses minimal satu materi pembelajaran AI yang relevan.</td></tr>
+          <tr><td class="num">3.4</td><td class="group-cell">Rekomendasi Materi</td><td class="activity-cell">Menampilkan rekomendasi materi terbaru atau terpopuler di Web Hub agar anggota lebih mudah menemukan topik yang sesuai.</td></tr>
+          <tr><td class="num">3.5</td><td class="group-cell">Analisis Performa</td><td class="activity-cell">Menganalisis performa materi pembelajaran berdasarkan jumlah akses untuk mengetahui topik yang paling diminati.</td></tr>
+          <tr><td class="num">3.6</td><td class="group-cell">Laporan Bulanan</td><td class="activity-cell">Menyusun laporan akses pembelajaran bulanan yang mencakup jumlah peserta unik, materi terpopuler, efektivitas kanal distribusi, dan kendala akses.</td></tr>
 
-      <!-- KR 3 -->
-      <tr>
-        <td class="td-no">3</td>
-        <td class="kr-cell">Mencapai minimal 30–50 peserta atau penonton unik dalam satu kuartal yang mengakses materi pembelajaran AI melalui Web Hub atau kanal resmi yang disediakan.</td>
-        <td>
-          <ul class="act-list">
-            <li><span class="act-num">1</span><span class="act-text">Mengunggah dan mengelola materi pembelajaran AI di Web Hub atau kanal resmi, termasuk katalog berisi topik, deskripsi, video, dan bahan praktik.</span></li>
-            <li><span class="act-num">2</span><span class="act-text">Membuat sistem tracking peserta atau penonton unik melalui data akses Web Hub, analytics video, atau rekap manual.</span></li>
-            <li><span class="act-num">3</span><span class="act-text">Membuat materi promosi dan reminder akses untuk mendorong anggota mengakses minimal satu materi pembelajaran AI yang relevan.</span></li>
-            <li><span class="act-num">4</span><span class="act-text">Menampilkan rekomendasi materi terbaru atau populer di Web Hub agar anggota lebih mudah menemukan topik yang sesuai.</span></li>
-            <li><span class="act-num">5</span><span class="act-text">Menganalisis performa materi pembelajaran berdasarkan jumlah akses untuk mengetahui topik yang paling diminati.</span></li>
-            <li><span class="act-num">6</span><span class="act-text">Menyusun laporan akses pembelajaran bulanan yang mencakup jumlah peserta atau penonton unik, materi terpopuler, efektivitas kanal distribusi, dan kendala akses.</span></li>
-          </ul>
-        </td>
-      </tr>
-
-      <!-- KR 4 -->
-      <tr>
-        <td class="td-no">4</td>
-        <td class="kr-cell">Mengumpulkan minimal 3–5 bukti penerapan atau testimoni belajar dalam satu kuartal dari anggota yang berhasil menggunakan materi AI untuk kebutuhan bisnis, produktivitas, atau pengembangan diri.</td>
-        <td>
-          <ul class="act-list">
-            <li><span class="act-num">1</span><span class="act-text">Membuat form feedback pembelajaran</span></li>
-            <li><span class="act-num">2</span><span class="act-text">Mengumpulkan bukti praktik anggota dan testimoni penggunaan AI.</span></li>
-            <li><span class="act-num">3</span><span class="act-text">Menghubungi serta memverifikasi peserta yang berpotensi menjadi studi kasus.</span></li>
-            <li><span class="act-num">4</span><span class="act-text">Menyusun 3–5 testimoni atau studi kasus belajar setiap kuartal.</span></li>
-            <li><span class="act-num">5</span><span class="act-text">Mendokumentasikan dan mempublikasikan testimoni terpilih melalui Web Hub atau kanal internal.</span></li>
-          </ul>
-        </td>
-      </tr>
-
-    </tbody>
-  </table>
+          <!-- KR 4 -->
+          <tr class="group-row"><td colspan="3"><span>KR 4</span>3–5 Bukti Penerapan / Testimoni per Kuartal</td></tr>
+          <tr><td class="num">4.1</td><td class="group-cell">Form Feedback Belajar</td><td class="activity-cell">Membuat form feedback pembelajaran untuk mengumpulkan respons anggota setelah mengikuti materi AI.</td></tr>
+          <tr><td class="num">4.2</td><td class="group-cell">Pengumpulan Bukti</td><td class="activity-cell">Mengumpulkan bukti praktik dan testimoni pengguna AI dari anggota yang telah menyelesaikan materi pembelajaran.</td></tr>
+          <tr><td class="num">4.3</td><td class="group-cell">Verifikasi Studi Kasus</td><td class="activity-cell">Menghubungi dan memverifikasi peserta yang berpotensi menjadi studi kasus penerapan nyata.</td></tr>
+          <tr><td class="num">4.4</td><td class="group-cell">Penyusunan Testimoni</td><td class="activity-cell">Menyusun 3–5 testimoni atau studi kasus belajar terpilih setiap kuartal.</td></tr>
+          <tr><td class="num">4.5</td><td class="group-cell">Publikasi Testimoni</td><td class="activity-cell">Mendokumentasikan dan mempublikasikan testimoni terpilih melalui Web Hub atau kanal internal.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
-
-<!-- ════════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════
      OBJECTIVE 3
 ════════════════════════════════════════════════════ -->
-<div class="objective-block">
-
-  <div class="objective-header">
-    <span class="obj-badge">Objective 3</span>
-    <span class="obj-text">Mengembangkan Web Hub sebagai pusat akses digital terpadu bagi anggota HIPMI Institute untuk mengakses tools, materi AI, formulir digitalisasi, dan informasi lainnya secara terpusat.</span>
+<div class="objective-block obj3" id="obj3">
+  <div class="obj-header">
+    <div class="obj-number">Objektif 3</div>
+    <div class="obj-title">Mengembangkan Web Hub sebagai pusat akses digital terpadu bagi anggota HIPMI Institute untuk mengakses tools, materi AI, formulir digitalisasi, dan informasi program secara terpusat.</div>
   </div>
 
-  <table class="main-table">
-    <thead>
-      <tr>
-        <th class="col-no">#</th>
-        <th class="col-kr">Key Result</th>
-        <th class="col-act">Activity</th>
-      </tr>
-    </thead>
-    <tbody>
+  <div class="kr-section">
+    <div class="kr-label">Key Results</div>
+    <ul class="kr-list">
+      <li>Meluncurkan Web Hub versi awal/MVP yang memuat halaman utama, Library App, materi pembelajaran AI, Diagnostic Form, dokumentasi proker, dan informasi program Bidang 12.</li>
+      <li>Memastikan 100% menu utama Web Hub dapat diakses tanpa critical error pada fungsi utama: login, navigasi halaman, akses tools, akses materi, dan submit formulir.</li>
+      <li>Mengelola pembaruan konten Web Hub secara berkala minimal 2 kali per bulan agar tools, materi pembelajaran, dokumentasi, dan informasi program selalu terbarui.</li>
+      <li>Mencapai minimal 15 pengunjung aktif mingguan yang kembali mengakses Web Hub untuk membuka tools, materi pembelajaran, formulir, atau dokumentasi program.</li>
+    </ul>
+  </div>
 
-      <!-- KR 1 -->
-      <tr>
-        <td class="td-no">1</td>
-        <td class="kr-cell">Meluncurkan Web Hub versi awal/MVP yang memuat halaman utama, Library App, materi pembelajaran AI, Diagnostic Form, dokumentasi proker, dan informasi program Bidang 12.</td>
-        <td>
-          <ul class="act-list">
-            <li><span class="act-num">1</span><span class="act-text">Menentukan struktur dan alur pengguna Web Hub agar mudah diakses dan digunakan oleh anggota HIPMI Institute.</span></li>
-            <li><span class="act-num">2</span><span class="act-text">Mendesain dan membangun Web Hub versi awal (MVP) yang mencakup halaman utama, Library App, Materi Pembelajaran AI, Diagnostic Form, Dokumentasi Proker, dan Informasi Program.</span></li>
-            <li><span class="act-num">3</span><span class="act-text">Mengunggah konten awal dan mengatur hak akses pengguna sesuai kebutuhan anggota dan pengurus.</span></li>
-            <li><span class="act-num">4</span><span class="act-text">Melakukan pengujian dan perbaikan awal untuk memastikan seluruh fitur dan navigasi berjalan dengan baik.</span></li>
-            <li><span class="act-num">5</span><span class="act-text">Meluncurkan Web Hub versi awal serta menyediakan panduan singkat penggunaan bagi anggota HIPMI Institute.</span></li>
-          </ul>
-        </td>
-      </tr>
+  <div class="activities-wrap">
+    <div class="act-label">Aktivitas</div>
+    <div class="table-scroll">
+      <table id="tbl3">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Key Result</th>
+            <th>Aktivitas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- KR 1 -->
+          <tr class="group-row"><td colspan="3"><span>KR 1</span>Peluncuran Web Hub MVP</td></tr>
+          <tr><td class="num">1.1</td><td class="group-cell">Struktur &amp; Alur</td><td class="activity-cell">Menentukan struktur dan alur pengguna Web Hub agar mudah diakses dan digunakan oleh anggota HIPMI Institute.</td></tr>
+          <tr><td class="num">1.2</td><td class="group-cell">Desain &amp; Build MVP</td><td class="activity-cell">Mendesain dan membangun Web Hub versi awal (MVP) yang mencakup halaman utama, Library App, Materi AI, Diagnostic Form, Dokumentasi Proker, dan Informasi Program.</td></tr>
+          <tr><td class="num">1.3</td><td class="group-cell">Konten &amp; Hak Akses</td><td class="activity-cell">Mengunggah konten awal dan mengatur hak akses pengguna sesuai kebutuhan anggota dan pengurus.</td></tr>
+          <tr><td class="num">1.4</td><td class="group-cell">Pengujian Awal</td><td class="activity-cell">Melakukan pengujian dan perbaikan awal untuk memastikan seluruh fitur dan navigasi berjalan dengan baik.</td></tr>
+          <tr><td class="num">1.5</td><td class="group-cell">Peluncuran</td><td class="activity-cell">Meluncurkan Web Hub versi awal dan menyediakan panduan singkat penggunaan bagi anggota HIPMI Institute.</td></tr>
 
-      <!-- KR 2 -->
-      <tr>
-        <td class="td-no">2</td>
-        <td class="kr-cell">Memastikan 100% menu utama Web Hub dapat diakses tanpa critical error pada fungsi utama seperti login, navigasi halaman, akses tools, akses materi, dan submit formulir.</td>
-        <td>
-          <ul class="act-list">
-            <li><span class="act-num">1</span><span class="act-text">Menyusun checklist pengujian Web Hub untuk memastikan seluruh fungsi utama berjalan dengan baik.</span></li>
-            <li><span class="act-num">2</span><span class="act-text">Menguji akses pengguna dan navigasi menu utama agar seluruh halaman dapat diakses sesuai hak akses yang diberikan.</span></li>
-            <li><span class="act-num">3</span><span class="act-text">Menguji fungsi Library App, materi pembelajaran AI, dan Diagnostic Form untuk memastikan seluruh fitur dapat digunakan dengan baik.</span></li>
-            <li><span class="act-num">4</span><span class="act-text">Menguji tampilan Web Hub di berbagai perangkat agar tetap nyaman digunakan oleh anggota.</span></li>
-            <li><span class="act-num">5</span><span class="act-text">Mencatat dan memperbaiki bug atau critical error yang ditemukan selama proses pengujian.</span></li>
-            <li><span class="act-num">6</span><span class="act-text">Melakukan pengujian ulang setelah perbaikan untuk memastikan seluruh fungsi berjalan dengan baik.</span></li>
-            <li><span class="act-num">7</span><span class="act-text">Melakukan user testing dengan pengguna internal sebagai validasi awal sebelum atau sesudah peluncuran.</span></li>
-            <li><span class="act-num">8</span><span class="act-text">Menyusun laporan hasil pengujian Web Hub yang mencakup temuan, perbaikan, dan status kelayakan penggunaan.</span></li>
-          </ul>
-        </td>
-      </tr>
+          <!-- KR 2 -->
+          <tr class="group-row"><td colspan="3"><span>KR 2</span>100% Menu Utama Bebas Critical Error</td></tr>
+          <tr><td class="num">2.1</td><td class="group-cell">Checklist Pengujian</td><td class="activity-cell">Menyusun checklist pengujian Web Hub untuk memastikan seluruh fungsi utama berjalan dengan baik.</td></tr>
+          <tr><td class="num">2.2</td><td class="group-cell">Uji Akses Pengguna</td><td class="activity-cell">Menguji akses pengguna dan navigasi menu utama agar seluruh halaman dapat diakses sesuai hak akses yang diberikan.</td></tr>
+          <tr><td class="num">2.3</td><td class="group-cell">Uji Fitur Utama</td><td class="activity-cell">Menguji fungsi Library App, materi pembelajaran AI, dan Diagnostic Form untuk memastikan semua fitur dapat digunakan dengan baik.</td></tr>
+          <tr><td class="num">2.4</td><td class="group-cell">Uji Lintas Perangkat</td><td class="activity-cell">Menguji tampilan Web Hub di berbagai perangkat agar tetap nyaman digunakan oleh anggota.</td></tr>
+          <tr><td class="num">2.5</td><td class="group-cell">Perbaikan Bug</td><td class="activity-cell">Mencatat dan memperbaiki bug atau critical error yang ditemukan selama proses pengujian.</td></tr>
+          <tr><td class="num">2.6</td><td class="group-cell">Uji Ulang Pasca-Fix</td><td class="activity-cell">Melakukan pengujian ulang setelah perbaikan untuk memastikan seluruh fungsi berjalan dengan baik.</td></tr>
+          <tr><td class="num">2.7</td><td class="group-cell">User Testing Internal</td><td class="activity-cell">Melakukan user testing dengan pengguna internal sebagai validasi awal sebelum atau sesudah peluncuran.</td></tr>
+          <tr><td class="num">2.8</td><td class="group-cell">Laporan Pengujian</td><td class="activity-cell">Menyusun laporan hasil pengujian Web Hub yang mencakup temuan, perbaikan, dan status kelayakan penggunaan.</td></tr>
 
-      <!-- KR 3 -->
-      <tr>
-        <td class="td-no">3</td>
-        <td class="kr-cell">Mengelola update konten Web Hub secara berkala minimal 2 kali dalam sebulan agar tools, materi pembelajaran, dokumentasi, dan informasi program tetap terbarui.</td>
-        <td>
-          <ul class="act-list">
-            <li><span class="act-num">1</span><span class="act-text">Menyusun jadwal pembaruan Web Hub secara rutin minimal 2 kali dalam sebulan.</span></li>
-            <li><span class="act-num">2</span><span class="act-text">Mengumpulkan dan memperbarui konten terbaru pada Library App, materi pembelajaran AI, dokumentasi proker, dan informasi program Bidang 12.</span></li>
-            <li><span class="act-num">3</span><span class="act-text">Memastikan seluruh link, file, video, dan formulir tetap dapat diakses dengan baik setelah proses pembaruan.</span></li>
-            <li><span class="act-num">4</span><span class="act-text">Mencatat setiap pembaruan konten sebagai dokumentasi pengelolaan Web Hub.</span></li>
-            <li><span class="act-num">5</span><span class="act-text">Menyampaikan ringkasan update kepada anggota melalui kanal internal agar informasi terbaru dapat diketahui dengan mudah.</span></li>
-            <li><span class="act-num">6</span><span class="act-text">Mengevaluasi konten yang kurang aktif digunakan untuk menentukan kebutuhan perbaikan, promosi ulang, atau pengarsipan.</span></li>
-          </ul>
-        </td>
-      </tr>
+          <!-- KR 3 -->
+          <tr class="group-row"><td colspan="3"><span>KR 3</span>Pembaruan Konten Web Hub (Min. 2×/Bulan)</td></tr>
+          <tr><td class="num">3.1</td><td class="group-cell">Jadwal Pembaruan</td><td class="activity-cell">Menyusun jadwal pembaruan Web Hub secara rutin minimal 2 kali per bulan.</td></tr>
+          <tr><td class="num">3.2</td><td class="group-cell">Update Konten</td><td class="activity-cell">Mengumpulkan dan memperbarui konten terbaru pada Library App, materi pembelajaran AI, dokumentasi proker, dan informasi program.</td></tr>
+          <tr><td class="num">3.3</td><td class="group-cell">Cek Tautan &amp; File</td><td class="activity-cell">Memastikan seluruh tautan, file, video, dan formulir tetap dapat diakses dengan baik setelah proses pembaruan.</td></tr>
+          <tr><td class="num">3.4</td><td class="group-cell">Catatan Pembaruan</td><td class="activity-cell">Mencatat setiap pembaruan konten sebagai dokumentasi pengelolaan Web Hub.</td></tr>
+          <tr><td class="num">3.5</td><td class="group-cell">Ringkasan Update</td><td class="activity-cell">Menyampaikan ringkasan pembaruan kepada anggota melalui kanal internal agar informasi terbaru dapat diketahui dengan mudah.</td></tr>
+          <tr><td class="num">3.6</td><td class="group-cell">Evaluasi Konten</td><td class="activity-cell">Mengevaluasi konten yang kurang aktif digunakan untuk menentukan kebutuhan perbaikan, promosi ulang, atau pengarsipan.</td></tr>
 
-      <!-- KR 4 -->
-      <tr>
-        <td class="td-no">4</td>
-        <td class="kr-cell">Mencapai minimal 15 pengunjung aktif mingguan yang kembali mengakses Web Hub untuk membuka tools, materi pembelajaran, formulir, atau dokumentasi program.</td>
-        <td>
-          <ul class="act-list">
-            <li><span class="act-num">1</span><span class="act-text">Membuat sistem tracking dan evaluasi pengunjung aktif mingguan untuk memantau pencapaian target minimal 15 pengguna aktif.</span></li>
-            <li><span class="act-num">2</span><span class="act-text">Menganalisis halaman yang paling sering diakses guna memahami kebutuhan dan perilaku pengguna.</span></li>
-            <li><span class="act-num">3</span><span class="act-text">Memperbarui konten Web Hub secara berkala agar anggota memiliki alasan untuk kembali mengakses.</span></li>
-            <li><span class="act-num">4</span><span class="act-text">Melakukan reminder dan promosi fitur yang relevan melalui kanal komunikasi HIPMI Institute.</span></li>
-            <li><span class="act-num">5</span><span class="act-text">Mengidentifikasi kendala pengguna dan melakukan perbaikan ringan untuk meningkatkan kemudahan akses.</span></li>
-            <li><span class="act-num">6</span><span class="act-text">Menyusun laporan bulanan aktivitas pengunjung sebagai dasar evaluasi dan pengembangan Web Hub.</span></li>
-          </ul>
-        </td>
-      </tr>
-
-    </tbody>
-  </table>
+          <!-- KR 4 -->
+          <tr class="group-row"><td colspan="3"><span>KR 4</span>Min. 15 Pengunjung Aktif Mingguan</td></tr>
+          <tr><td class="num">4.1</td><td class="group-cell">Sistem Tracking</td><td class="activity-cell">Membuat sistem tracking dan evaluasi pengunjung aktif mingguan untuk memantau pencapaian target minimal 15 pengguna aktif.</td></tr>
+          <tr><td class="num">4.2</td><td class="group-cell">Analisis Halaman</td><td class="activity-cell">Menganalisis halaman yang paling sering diakses untuk memahami kebutuhan dan perilaku pengguna.</td></tr>
+          <tr><td class="num">4.3</td><td class="group-cell">Pembaruan Konten</td><td class="activity-cell">Memperbarui konten Web Hub secara berkala agar anggota memiliki alasan untuk kembali mengakses.</td></tr>
+          <tr><td class="num">4.4</td><td class="group-cell">Reminder &amp; Promosi</td><td class="activity-cell">Melakukan reminder dan promosi fitur yang relevan melalui kanal komunikasi HIPMI Institute.</td></tr>
+          <tr><td class="num">4.5</td><td class="group-cell">Perbaikan Kendala</td><td class="activity-cell">Mengidentifikasi kendala pengguna dan melakukan perbaikan ringan untuk meningkatkan kemudahan akses.</td></tr>
+          <tr><td class="num">4.6</td><td class="group-cell">Laporan Bulanan</td><td class="activity-cell">Menyusun laporan bulanan aktivitas pengunjung sebagai dasar evaluasi dan pengembangan Web Hub ke depan.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
+<!-- FOOTER -->
+<div class="footer">
+  <span>Bidang 12 — Digitalisasi &amp; AI · HIPMI Institute</span>
+  <span>Program Kerja 2025</span>
+</div>
+
+<script>
+function copyTable() {
+  const sections = ['tbl1','tbl2','tbl3'];
+  let text = 'PROGRAM KERJA BIDANG 12 — DIGITALISASI & AI\n\n';
+
+  sections.forEach((id, si) => {
+    const tbl = document.getElementById(id);
+    if (!tbl) return;
+    text += `=== OBJEKTIF ${si+1} ===\n`;
+    tbl.querySelectorAll('tr').forEach(row => {
+      const cells = [...row.querySelectorAll('th,td')].map(c => c.innerText.replace(/\n/g,' ').trim());
+      if (cells.length) text += cells.join('\t') + '\n';
+    });
+    text += '\n';
+  });
+
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    const orig = btn.innerHTML;
+    btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="13" height="13"><polyline points="20 6 9 17 4 12"/></svg> Tersalin!`;
+    btn.style.color = 'var(--accent3)';
+    btn.style.borderColor = 'var(--accent3)';
+    setTimeout(() => { btn.innerHTML = orig; btn.style.color=''; btn.style.borderColor=''; }, 2000);
+  });
+}
+</script>
 </body>
 </html>
